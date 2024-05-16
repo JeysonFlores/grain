@@ -1,0 +1,36 @@
+/**
+ * Utility for managing colors and converting multiple formats.
+ *
+ * @example from "color" include Color
+ * @example
+ * let color = Color.Rgba{r: 255, g: 255, b: 255, a: 0}
+ * print(Color.toHex(color)) // #FFFFFF
+ */
+module Color
+
+from "runtime/string" include String as RuntimeString
+
+/**
+ * Data structure representing the supported color formats.
+ *
+ * @example
+ * Color.Rgba{r: 255, g: 255, b: 255, a: 0}
+ */
+provide enum Color {
+  Rgba{ r: Number, g: Number, b: Number, a: Number },
+}
+
+provide let toString = color => {
+  match (color) {
+    Rgba{ r, g, b, a } =>
+      "(" ++
+        RuntimeString.toString(r) ++
+        ", " ++
+        RuntimeString.toString(g) ++
+        ", " ++
+        RuntimeString.toString(b) ++
+        ", " ++
+        RuntimeString.toString(a) ++
+        ")",
+  }
+}
