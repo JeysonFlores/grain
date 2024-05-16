@@ -1,0 +1,87 @@
+module Datetime
+
+from "map" include Map
+
+module Timezone {
+  let timezonesDb = Map.fromList([("UTC", 0)])
+
+  provide record Foo {
+    name: String,
+    referenceToUtc: Number,
+  }
+
+  // provide let make = zoneName => {
+  //     match (Map.get(zoneName, timezonesDb)) {
+  //         Some(reference) => Foo{name: zoneName, referenceToUtc: referece},
+  //         None => Foo{name: "", referenceToUtc: 0},
+  //     }
+  // }
+
+}
+
+module Timedelta {
+  record Timedelta {
+    years: Number,
+    months: Number,
+    days: Number,
+    hours: Number,
+    minutes: Number,
+    seconds: Number,
+  }
+
+  provide let make = (years=0, months=0, days=0, hours=0, minutes=0, seconds=0) => {
+    ""
+  }
+}
+
+record Datetime {
+  year: Number,
+  month: Number,
+  day: Number,
+  weekday: Number,
+  hour: Number,
+  minute: Number,
+  seconds: Number,
+  unixTime: Number,
+  _timezone: Option<String>,
+}
+
+provide let now = (timeZone="UTC") => {
+  //TODO: calculate everything from UNIX time
+  // Datetime {
+  //     year: 0,
+  //     month: 0,
+  //     day: 0,
+  //     weekday: 0,
+  //     hour: 0,
+  //     minute: 0,
+  //     seconds: 0,
+  //     unixTime: 0,
+  //     _timezone: Some(timeZone),
+  // }
+  ""
+}
+
+provide let fromUnixTime = (timezone="UTC") => {
+  ""
+}
+
+provide let make = (
+  year=0,
+  month=0,
+  day=0,
+  hour=0,
+  minute=0,
+  second=0,
+  timezone="UTC",
+) => {
+  ""
+}
+
+provide let fromStringFormat = (dateString, dateFormat) => {
+  ""
+}
+
+provide let toFormatString = (dateTime, dateFormat) => {
+  ""
+}
