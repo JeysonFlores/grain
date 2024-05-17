@@ -1,0 +1,25 @@
+module Complex
+
+from "./number.gr" include Number
+
+provide record Complex {
+  r: Number,
+  i: Number,
+}
+
+provide let make = (r, i) => {
+  { r, i }
+}
+
+provide let (+) = (a, b) => {
+  { r: a.r + b.r, i: a.i + b.i }
+}
+
+provide let (-) = (a, b) => {
+  { r: a.r - b.r, i: a.i - b.i }
+}
+
+provide let (*) = (a: Complex, b: Complex) => {
+  use Number.{ (+), (*) }
+  { r: a.r * b.r + -1 * (a.i * b.i), i: a.r * b.i + a.i * b.r }
+}
